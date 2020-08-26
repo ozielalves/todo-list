@@ -1,0 +1,211 @@
+$Playfair: 'Playfair Display', serif;
+$doneShadow: -20px 12px 0px #3dd8ad;
+$todoShadow: 10px 8px 0px #ffa500;
+
+@mixin flexing($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $Playfair;
+}
+
+body {
+    margin: 0 10rem;
+    min-height: 94vh;
+}
+
+header {
+    @include flexing(column);
+    max-height: 270px;
+    text-align: center;
+    font-size: 1.5rem;
+    /*box-shadow: 0px -100px 0px #222231;*/
+    box-shadow: -20px -12px 0px #222231;
+    padding: 2rem;
+    margin: 2rem 0 0 0;
+    transition: 1s ease;
+    border-style: solid;
+    border-radius: 5px;
+
+    .title {
+        justify-self: center;
+        display: flex;
+        
+        i {
+            position: relative;
+            align-self: center;
+            margin: 1rem;
+        }
+    }
+
+    form {
+        margin: 10px;
+
+        input, button{
+            padding: 0.5rem;
+            border-width: 3px;
+            border-color: #222231;
+            font-weight: bold;
+            border-style: solid;
+            border-radius: 1.5px;
+        }
+    
+        button {
+            cursor: pointer;
+            color: #222231;
+            border-radius: 1.5px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                background: #222231;
+                color: white;
+            }
+        }
+    }
+
+    select {
+        appearance: none;
+        outline: none;
+        border: none;
+    }
+
+    .select {
+        margin: 1rem;
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: "\25BC";
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0.1rem;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        &:hover::after {
+            color: #ffa500;
+        }
+    }
+
+    select {
+        padding: 0.2px;
+        width: 10rem;
+        cursor: pointer;
+        box-shadow: 0px 10px 0px #222231;
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0px 10px 0px #ffa500;
+        }
+    }
+}
+
+.not-blank{
+    box-shadow: 20px 12px 0px #222231;
+    border-radius: 5px;
+}
+
+.todo-container {
+    @include flexing(row);
+    margin: 2rem 0;
+    /*grid-template-columns: 200px 1fr 1fr 1fr;*/
+
+    .todo-list {
+        min-width: 30%;
+        list-style: none;
+    }
+
+    .todo {
+        margin: 1rem 0.5rem 0.5rem 0.5rem;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        background: #ee7600;
+        box-shadow: $todoShadow;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 1.5px;
+        transition: all 1s ease;
+
+        li {
+            flex: 1;
+        }
+
+        .trash-btn,
+        .complete-btn {
+            margin: 3px;
+            border-width: 1px;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: 0.3 ease;
+            border-radius: 1.5px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .trash-btn {
+            background-color: #800101;
+            &:hover {
+                background-color: #a72d2d;
+            }
+        }
+
+        .complete-btn {
+            background-color: #3dd8ad;
+            &:hover {
+                background-color: rgb(95, 228, 190);
+            }
+        }
+
+        .fa-trash, 
+        .fa-check {
+            pointer-events: none;
+        }
+    }
+
+    .completed {
+        background-color: #51925a;
+        box-shadow: $doneShadow;
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    .fadeOut {
+        box-shadow: 25px 15px 0px #ffffff;
+        opacity: 0;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    body {
+        margin: 1.7rem;
+        @include flexing(column);
+    }
+
+    header {
+        font-size: 1rem;
+        padding: 2rem;
+        margin: 2rem 0 0 0;
+        box-shadow: -20px -12px 0px #222231;
+        border-radius: 5px;
+    }
+
+    .todo-item {
+        font-size: 1rem;
+    }
+}
