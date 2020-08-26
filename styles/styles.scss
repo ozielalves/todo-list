@@ -26,7 +26,6 @@ header {
     max-height: 270px;
     text-align: center;
     font-size: 1.5rem;
-    /*box-shadow: 0px -100px 0px #222231;*/
     box-shadow: -20px -12px 0px #222231;
     padding: 2rem;
     margin: 2rem 0 0 0;
@@ -139,6 +138,7 @@ header {
 
         li {
             flex: 1;
+            margin-right: 0.5rem;
         }
 
         .trash-btn,
@@ -177,6 +177,11 @@ header {
         }
     }
 
+    .todo-item {
+        max-width: 770px;
+        overflow-wrap: break-word;
+    }
+
     .completed {
         background-color: #51925a;
         box-shadow: $doneShadow;
@@ -203,9 +208,40 @@ header {
         margin: 2rem 0 0 0;
         box-shadow: -20px -12px 0px #222231;
         border-radius: 5px;
+
+        .todo-input {
+            width: 150px;
+        }
     }
 
-    .todo-item {
-        font-size: 1rem;
+    .todo {
+        max-width: 330px;
+
+        .todo-item {
+            font-size: 1rem;
+            max-width: 235px;
+            overflow-wrap: break-word;
+        }
+    }
+    .todo-container{
+        .completed {
+            box-shadow: -15px 12px 0px #3dd8ad;
+        }
     }
 }
+
+@media screen and (max-width: 320px) {
+    header {
+        width:  230px;
+
+        .fa-stream {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        @include flexing(column);
+    }
+}    
