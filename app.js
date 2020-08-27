@@ -14,8 +14,6 @@ todoButton.addEventListener('click', () => {
     header.classList.toggle('not-blank');
 });
 todoList.addEventListener('click', deleteCheck);
-filterOption.addEventListener('click', filterTodo);
-
 
 // Functions
 function addTodo(event) {
@@ -70,21 +68,21 @@ function deleteCheck(e) {
     }
 }
 
-function filterTodo(e){
+function filterTodo(selected){
     const todos = todoList.childNodes;
     todos.forEach(function(todo){
-        switch(e.target.value) {
-            case 'all':
+        switch(selected/* e.target.value */) {
+            case 0:
                 todo.style.display = 'flex';
                 break;
-            case 'completed':
+            case 1:
                 if (todo.classList.contains('completed')) {
                     todo.style.display = 'flex';
                 } else {
                     todo.style.display = 'none';
                 }
                 break;
-            case 'uncompleted':
+            case 2:
                 if (!todo.classList.contains('completed')) {
                     todo.style.display = 'flex';
                 } else {
