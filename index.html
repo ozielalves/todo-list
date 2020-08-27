@@ -22,7 +22,7 @@
                 <i class="fas fa-plus-square"></i>
             </button>
             <div class="select">
-                <select name="todos" class="filter-todos">
+                <select name="todos" class="filter-todos" onchange="filterTodo(this.selectedIndex)">
                     <option value="all">All</option>
                     <option value="completed">Completed</option>
                     <option value="uncompleted">Uncompleted</option>
